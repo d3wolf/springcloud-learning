@@ -1,0 +1,95 @@
+# Output Directory
+target/
+out/
+src_test/
+src/ext/generic/license/
+#test update
+
+# C pre-compile
+*.gch
+*.pch
+
+# C compile
+*.a
+*.o
+*.ko
+*.la
+*.lo
+*.obj
+*.elf
+*.so
+*.so.*
+*.dylib
+*.exe
+*.lib
+*.dll
+*.out
+*.app
+*.hex
+
+# Debug files
+*.dSYM/
+
+# Java
+
+# Java Package Files
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Zip Files
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Ant
+build/
+
+# Compiled Python
+__pycache__/
+*.py[cod]
+*py.class
+
+# Eclipse
+.settings/
+.classpath
+.project
+
+# IntelliJ, based on http://devnet.jetbrains.net/docs/DOC-1186
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# vscode
+.vscode/
+
+# logs and trace
+*.log
+*.trace
+*.dat
+
+# vi swap
+*.swp
+
+# Backup Files
+*.bak
+*.old
+
+# SVN metadata
+.svn/
+
+# Mac
+.DS_Store
+
+# gradle
+.gradle
+
+/node_modules
+
+/metastore_db
+
+/log
