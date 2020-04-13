@@ -93,3 +93,5 @@ __pycache__/
 /metastore_db
 
 /log
+
+rebel.xml
