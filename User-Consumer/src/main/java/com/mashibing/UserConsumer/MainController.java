@@ -2,9 +2,11 @@ package com.mashibing.UserConsumer;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +18,10 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 public class MainController {
+
+	@Value("${server.port}")
+	String port;
+	private AtomicInteger count = new AtomicInteger();
 
 	@Autowired
 	//@Qualifier("user-provider")
@@ -59,7 +65,10 @@ public class MainController {
 		 * jar
 		 * 文档
 		 */
-		return api.alive();
+		int i = count.getAndIncrement();
+		String consumerMessage =  "consumer port:" + port + ", invoke count:" + i;
+		String providerMessage = api.alive();
+		return consumerMessage + "   " + providerMessage;
 	
 	
 	/**
