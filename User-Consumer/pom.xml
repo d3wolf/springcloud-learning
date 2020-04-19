@@ -41,7 +41,8 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
-		<!-- HttpClient 实现 -->
+		<!-- HttpClient 实现
+		Feign默认所有带参数的请求都是Post，想要使用指定的提交方式需引入依赖-->
 		<dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-httpclient</artifactId>

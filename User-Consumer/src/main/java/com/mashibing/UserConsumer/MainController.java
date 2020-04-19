@@ -125,9 +125,9 @@ public class MainController {
 	public Map<Integer, String> map3(@RequestParam Map<String, Object> map) {
 		HashMap<String, Object> map1 = new HashMap<>(2);
 		
-		map1.put("id", 2000);
-		map1.put("name", "凯");
-		return api.getMap3(map1);
+//		map1.put("id", 2000);
+//		map1.put("name", "凯");
+		return api.getMap3(map);
 	}
 	
 	
@@ -153,7 +153,7 @@ public class MainController {
 		
 		Person person = new Person();
 		person.setId(Integer.parseInt(map.get("id").toString()));
-		person.setName("xxoo");
-		return api.postPserson(person);
+		person.setName(map.get("name").toString());
+		return api.postPerson(person);
 	};
 }

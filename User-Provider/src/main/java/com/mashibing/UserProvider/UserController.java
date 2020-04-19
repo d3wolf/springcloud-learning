@@ -30,8 +30,10 @@ public class UserController implements UserApi {
 
 		try {
 			System.out.println("准备睡");
-			
-			Thread.sleep(500);
+
+			if("81".equals(port)){
+				Thread.sleep(2500);
+			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,8 +45,8 @@ public class UserController implements UserApi {
 	}
 
 	@Override
+	@GetMapping("/getById")
 	public String getById(Integer id) {
-		id = 1;
 		Person p = new Person();
 		p.setId(id);
 		p.setName("Name_"+id);
@@ -83,7 +85,7 @@ public class UserController implements UserApi {
 	}
 
 	@Override
-	public Person postPserson(Person person) {
+	public Person postPerson(Person person) {
 		System.out.println(ToStringBuilder.reflectionToString(person));
 		return person;
 	}

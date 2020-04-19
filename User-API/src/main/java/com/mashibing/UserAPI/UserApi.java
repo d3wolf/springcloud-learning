@@ -1,9 +1,6 @@
 package com.mashibing.UserAPI;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/User")
 public interface UserApi {
@@ -18,9 +15,9 @@ public interface UserApi {
 	public String alive();
 	
 	@GetMapping("/getById")
-	public String getById(Integer id);
+	public String getById(@RequestParam("id") Integer id); //必须写RequestParam，不然不传参数
 	
 	
 	@PostMapping("/postPerson")
-	public Person postPserson(@RequestBody Person person);
+	public Person postPerson(@RequestBody Person person);
 }
