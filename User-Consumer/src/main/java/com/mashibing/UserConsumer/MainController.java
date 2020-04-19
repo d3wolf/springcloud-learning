@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,16 +12,45 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mashibing.UserAPI.Person;
 import com.mashibing.UserAPI.UserApi;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 public class MainController {
 
 	@Autowired
+	//@Qualifier("user-provider")
 	ConsumerApi api;
+	
+	
+	@Autowired
+	RestService rest;
+	
+	
 //	
 //	@Autowired
 //	MashibingApi mapi;
 
+	
+	// 给SpringMVC 编程servlet
+	@GetMapping("/alive2")
+	@HystrixCommand(defaultFallback = "back")
+	public String alive2() {
+		/**
+		 * URL 不能变 
+		 * 
+		 * jar
+		 * 文档
+		 */
+		return rest.alive();
+	}
+	
+	
+	public String back() {
+		
+		return "呵呵";
+	}
+	
+	
 	@GetMapping("/alive")
 	public String alive() {
 		/**
@@ -102,12 +132,14 @@ public class MainController {
 	
 	
 	}
-
-	@GetMapping("/getById")
-	public String getById(@RequestParam("id") Integer id){
-		return api.getById(id);
-	}
-
+	
+	
+//	@GetMapping("/vip")
+//	public String vip() {
+//		
+//		return mapi.getVip();
+//	}
+//	
 	@GetMapping("/map")
 	public Map<Integer, String> map(Integer id) {
 		System.out.println(id);
@@ -125,9 +157,9 @@ public class MainController {
 	public Map<Integer, String> map3(@RequestParam Map<String, Object> map) {
 		HashMap<String, Object> map1 = new HashMap<>(2);
 		
-//		map1.put("id", 2000);
-//		map1.put("name", "凯");
-		return api.getMap3(map);
+		map1.put("id", 2000);
+		map1.put("name", "凯");
+		return api.getMap3(map1);
 	}
 	
 	
@@ -153,7 +185,7 @@ public class MainController {
 		
 		Person person = new Person();
 		person.setId(Integer.parseInt(map.get("id").toString()));
-		person.setName(map.get("name").toString());
+		person.setName("xxoo");
 		return api.postPerson(person);
 	};
 }

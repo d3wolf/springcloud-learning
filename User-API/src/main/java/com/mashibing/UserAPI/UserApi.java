@@ -1,8 +1,11 @@
 package com.mashibing.UserAPI;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/User")
+//@RequestMapping("/User")
 public interface UserApi {
 
 	/**
@@ -11,13 +14,13 @@ public interface UserApi {
 	 * 查看当前服务状态~~~
 	 * @return (* ￣3)(ε￣ *)
 	 */
-	@GetMapping("/alive")
+	@GetMapping("/User/alive")
 	public String alive();
 	
-	@GetMapping("/getById")
-	public String getById(@RequestParam("id") Integer id); //必须写RequestParam，不然不传参数
+	@GetMapping("/User/getById")
+	public String getById(Integer id);
 	
 	
-	@PostMapping("/postPerson")
+	@PostMapping("/User/postPserson")
 	public Person postPerson(@RequestBody Person person);
 }

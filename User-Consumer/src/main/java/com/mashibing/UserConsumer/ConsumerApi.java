@@ -14,7 +14,7 @@ import com.mashibing.UserAPI.UserApi;
 /*
  * 不结合eureka，就是自定义一个client名字。就用url属性指定 服务器列表。url=“http://ip:port/”
  */
-@FeignClient(name = "user-provider")
+@FeignClient(name = "user-provider",fallbackFactory = UserProviderBackFactory.class)
 public interface ConsumerApi extends UserApi {
 	
 	/**
@@ -31,7 +31,7 @@ public interface ConsumerApi extends UserApi {
 	
 	
 	@GetMapping("/getMap2")
-	Map<Integer, String> getMap2(@RequestParam("id") Integer id,@RequestParam("name") String name);
+	Map<Integer, String> getMap2(@RequestParam("id") Integer id, @RequestParam("name") String name);
 	
 	@GetMapping("/getMap3")
 	Map<Integer, String> getMap3(@RequestParam Map<String, Object> map);

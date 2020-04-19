@@ -39,6 +39,10 @@ public class UserController implements UserApi {
 			e.printStackTrace();
 		}
 
+		if("81".equals(port)){
+			int i = 1/0;
+		}
+
 		int i = count.getAndIncrement();
 		System.out.println(port + " 好的 ====第：" + i + "次调用");
 		return "port:" + port + ", invoke count:" + i;
