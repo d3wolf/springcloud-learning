@@ -1,0 +1,7 @@
+language: java
+before_script:
+  - echo "before script"
+script:
+  - cd Eureka-Server && mvn clean package -DskipTests
+after_script:
+  - echo "after script"
