@@ -11,7 +11,7 @@
     </parent>
     <groupId>com.mashibing.User-Consumer</groupId>
     <artifactId>User-Consumer</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <name>User-Consumer</name>
     <description>Demo project for Spring Boot</description>
 
@@ -39,7 +39,7 @@
         <dependency>
             <groupId>com.mashibing.User-API</groupId>
             <artifactId>User-API</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <!-- HttpClient 实现 -->
